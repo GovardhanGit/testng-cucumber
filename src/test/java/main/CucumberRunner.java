@@ -31,10 +31,10 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import helpers.ReportHelper;
 
-@CucumberOptions(strict = true, monochrome = true, features = "src/test/resources/features", glue = "stepdefinition", format = {"pretty","json:target/cucumber.json"}, tags = { "@Regression,@JunitScenario,@Catalogue" })
+
+@CucumberOptions(strict = true, monochrome = true, features = "src/test/resources/features", glue = "stepdefinition", format = {"pretty","json:target/cucumber.json"}, tags = { "@Regression,@JunitScenario,@Filter,@Login,@Catalogue" })
 
 public class CucumberRunner extends AbstractTestNGCucumberTests {
-
 	public static Properties config = null;
 	public static WebDriver driver = null;
 
@@ -151,7 +151,7 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 
 	}
 	@AfterSuite(alwaysRun=true)
-	public void generateHTMLReports() {
+	public void generateHTMLReports(){
 		ReportHelper.generateCucumberReport();
 	}
 
