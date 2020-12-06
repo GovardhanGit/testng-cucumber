@@ -20,7 +20,7 @@ public class CartSteps extends CucumberRunner{
 	@Then("^Item \"([^\"]*)\" quantity is updated to \"([^\"]*)\"$")
 	public void editQuantity(String item,String newQuantity) {
 		cart.changeItemQuantity(item,newQuantity);
-		cart.updateCartButton.click();
+		cart.getUpdateCartButton().click();
 		
 	}
 	

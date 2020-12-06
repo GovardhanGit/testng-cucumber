@@ -12,14 +12,25 @@ import main.CucumberRunner;
 
 public class CatalougePage extends CucumberRunner{
 
-	public Select brandDropdown = new Select(driver.findElement(By.cssSelector("select#CatalogModel_BrandFilterApplied")));
-	public Select typeDropdown = new Select(driver.findElement(By.cssSelector("select#CatalogModel_TypesFilterApplied")));
-	public WebElement searchFilterButton = driver.findElement(By.cssSelector("input.esh-catalog-send"));
 	
-	public WebElement nextButtons = driver.findElement(By.xpath("(//a[@id='Next'])[1]"));
 	public List<WebElement> previousButtons = driver.findElements(By.cssSelector("a#Previous"));
 	public List<WebElement> pageDetails = driver.findElements(By.cssSelector("div.col-md-8 span.esh-pager-item"));
 	
+	public Select getBrandDropdown() {
+		return new Select(driver.findElement(By.cssSelector("select#CatalogModel_BrandFilterApplied")));
+	}
+	
+	public Select getTypeDropdown() {
+		return new Select(driver.findElement(By.cssSelector("select#CatalogModel_TypesFilterApplied")));
+	}
+	
+	public WebElement getSearchFilterButton() {
+		return driver.findElement(By.cssSelector("input.esh-catalog-send"));
+	}
+	
+	public WebElement getNextButton() {
+		return driver.findElement(By.xpath("(//a[@id='Next'])[1]"));
+	}
 	
 	public WebElement getCatalogueItem(String name) {
 		return driver.findElement(By.xpath("//div[@class='esh-catalog-name']//span[text()='"+name
@@ -38,7 +49,7 @@ public class CatalougePage extends CucumberRunner{
 	
 	public void goToPage(int pageNumber) {
 		for(int i=0;i<pageNumber-1;i++) {
-			WebElement next = driver.findElement(By.xpath("(//a[@id='Next'])[1]"));
+			WebElement next = getNextButton();
 			next.click();
 		}
 	}

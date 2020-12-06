@@ -7,10 +7,6 @@ import main.CucumberRunner;
 
 public class CartPage extends CucumberRunner{
 	
-	private WebElement continueShoppingButton = driver.findElement(By.xpath("//a[contains(@class,'esh-basket-checkout') and @href='/']"));
-	public WebElement checkoutButton = driver.findElement(By.xpath("//a[contains(@class,'esh-basket-checkout') and @href='/Basket/Checkout']"));
-	public WebElement updateCartButton = driver.findElement(By.xpath("//button[@name='updatebutton']"));
-	
 	public WebElement getProductRow(String itemName) {
 		return driver.findElement(By.xpath("//section[text()='"+itemName
 				+"']/ancestor::article"));
@@ -46,5 +42,12 @@ public class CartPage extends CucumberRunner{
 		return driver.findElement(By.xpath("//a[contains(@class,'esh-basket-checkout') and @href='/']"));
 	}
 	
+	public WebElement getCheckoutButton() {
+		return driver.findElement(By.xpath("//a[contains(@class,'esh-basket-checkout') and @href='/Basket/Checkout']"));
+	}
+	
+	public WebElement getUpdateCartButton() {
+		return driver.findElement(By.xpath("//button[@name='updatebutton']"));
+	}
 
 }
