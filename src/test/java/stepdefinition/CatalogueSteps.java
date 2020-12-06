@@ -29,7 +29,7 @@ public class CatalogueSteps extends CucumberRunner{
 	
 	@Then("^Add item can be added to cart$")
 	public void addItemToCart() throws Throwable{
-		System.out.println("Inside then 2");
+		
 		catalogue.getAddtoBasketButton(itemName).click();
 	}
 	

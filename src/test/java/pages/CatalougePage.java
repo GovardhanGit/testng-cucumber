@@ -22,17 +22,17 @@ public class CatalougePage extends CucumberRunner{
 	
 	
 	public WebElement getCatalogueItem(String name) {
-		return driver.findElement(By.cssSelector("//div[@class='esh-catalog-name']//span[text()='"+name
+		return driver.findElement(By.xpath("//div[@class='esh-catalog-name']//span[text()='"+name
 				+"']/ancestor::div[contains(@class,'esh-catalog-item')]"));
 	}
 	
 	public WebElement getAddtoBasketButton(String name) {
-		return driver.findElement(By.cssSelector("//div[@class='esh-catalog-name']//span[text()='"
+		return driver.findElement(By.xpath("//div[@class='esh-catalog-name']//span[text()='"
 				+name+"']/ancestor::div[contains(@class,'esh-catalog-item')]//input[@class='esh-catalog-button']"));
 	}
 	
 	public WebElement getPrice(String name) {
-		return driver.findElement(By.cssSelector("//div[@class='esh-catalog-name']//span[text()='"
+		return driver.findElement(By.xpath("//div[@class='esh-catalog-name']//span[text()='"
 				+name+"']/ancestor::div[contains(@class,'esh-catalog-item')]//div[@class='esh-catalog-price']//span"));
 	}
 	
