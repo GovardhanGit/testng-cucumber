@@ -1,7 +1,6 @@
 Feature: To search junit in google
-
-
 @JunitScenario
+@ignore
   Scenario: Junit Google
     Given I am on "cucumber" search page
     When I type "junit"

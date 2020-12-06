@@ -1,6 +1,7 @@
 Feature: To search testng in google
   
 @TestngScenario
+@ignore
   Scenario: Testng Google
     Given I am on "junit" search page
     When I type "testng"
