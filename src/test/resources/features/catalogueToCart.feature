@@ -7,4 +7,6 @@ Feature: To test cart details
     	Then Add item to cart
     	Then Item with name "Cup<T> Sheet" is present on cart
     	Then Item "Cup<T> Sheet" quantity is updated to "3"
-    	Then Item "Cup<T> Sheet" total cost should be "$ 25.50"  
+    	Then Item "Cup<T> Sheet" total cost should be "$ 25.50"
+    	Then Item "Cup<T> Sheet" quantity is updated to "0"
+    	Then Continue shopping  
