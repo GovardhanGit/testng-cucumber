@@ -16,7 +16,7 @@ public class CatalougePage extends CucumberRunner{
 	public Select typeDropdown = new Select(driver.findElement(By.cssSelector("select#CatalogModel_TypesFilterApplied")));
 	public WebElement searchFilterButton = driver.findElement(By.cssSelector("input.esh-catalog-send"));
 	
-	public List<WebElement> nextButtons = driver.findElements(By.cssSelector("a#Next"));
+	public WebElement nextButtons = driver.findElement(By.xpath("(//a[@id='Next'])[1]"));
 	public List<WebElement> previousButtons = driver.findElements(By.cssSelector("a#Previous"));
 	public List<WebElement> pageDetails = driver.findElements(By.cssSelector("div.col-md-8 span.esh-pager-item"));
 	
@@ -31,15 +31,15 @@ public class CatalougePage extends CucumberRunner{
 				+name+"']/ancestor::div[contains(@class,'esh-catalog-item')]//input[@class='esh-catalog-button']"));
 	}
 	
-	public WebElement getPrice(String name) {
+	public String getPrice(String name) {
 		return driver.findElement(By.xpath("//div[@class='esh-catalog-name']//span[text()='"
-				+name+"']/ancestor::div[contains(@class,'esh-catalog-item')]//div[@class='esh-catalog-price']//span"));
+				+name+"']/ancestor::div[contains(@class,'esh-catalog-item')]//div[@class='esh-catalog-price']//span")).getText();
 	}
 	
 	public void goToPage(int pageNumber) {
 		for(int i=0;i<pageNumber-1;i++) {
-			explicitWait(nextButtons.get(0));
-			nextButtons.get(0).click();
+			WebElement next = driver.findElement(By.xpath("(//a[@id='Next'])[1]"));
+			next.click();
 		}
 	}
 	

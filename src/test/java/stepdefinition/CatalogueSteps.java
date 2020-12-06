@@ -12,24 +12,27 @@ public class CatalogueSteps extends CucumberRunner{
 	CatalougePage catalogue = new CatalougePage();
 	String itemName;
 	
+	@Given("^User is on catalog page$")
+	public void homePage() throws Exception {
+		deleteAllCookies();
+		setEnv();
+	}
+	
 	@Given("^Item with name \"(.*?)\" is present on page (\\d+)$")
 	public void verifyCatakougeItemIsPresent(String name,int pageNumber) throws Throwable {
-		System.out.println("Inside Given");
 		itemName = name;
 		catalogue.goToPage(pageNumber);
 		Assert.assertTrue(catalogue.getCatalogueItem(name).isDisplayed(), "Catalogue is not present");
 		
 	}
 	
-	@Then("^Verify that items price should be (\\d+)$")
+	@Then("^Verify that items price should be \"(.*?)\"$")
 	public void verifyPrice(String price) throws Throwable {
-		System.out.println("Inside Then 1");
 		Assert.assertEquals(catalogue.getPrice(itemName), price,"Price is not matching");
 	}
 	
-	@Then("^Add item can be added to cart$")
+	@Then("^Add item to cart$")
 	public void addItemToCart() throws Throwable{
-		
 		catalogue.getAddtoBasketButton(itemName).click();
 	}
 	
