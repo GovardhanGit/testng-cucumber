@@ -1,6 +1,8 @@
 package stepdefinition;
 
 import org.testng.Assert;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -12,10 +14,11 @@ public class CatalogueSteps extends CucumberRunner{
 	CatalougePage catalogue = new CatalougePage();
 	String itemName;
 	
+	@Parameters({ "appUrl" })
 	@Given("^User is on catalog page$")
-	public void homePage() throws Exception {
+	public void homePage(@Optional("http://20.62.200.252:5106/") String appUrl) throws Exception {
 		deleteAllCookies();
-		setEnv();
+		setEnv(appUrl);
 	}
 	
 	@Given("^Item with name \"(.*?)\" is present on page (\\d+)$")
