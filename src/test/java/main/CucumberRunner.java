@@ -26,11 +26,12 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import helpers.ReportHelper;
-
 
 @CucumberOptions(strict = true, monochrome = true, features = "src/test/resources/features", glue = "stepdefinition", format = {"pretty","json:target/cucumber.json"}, tags = { "@Regression,@JunitScenario,@Filter,@Login,@Catalogue" })
 
@@ -104,10 +105,15 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 	public void deleteAllCookies() {
 		driver.manage().deleteAllCookies();
 	}
-
-	public void setEnv() throws Exception {
-		LoadConfigProperty();
-		String baseUrl = config.getProperty("siteUrl");
+	@Parameters({ "appUrl" })
+	public void setEnv(@Optional("http://20.62.200.252:5106/") String appUrl) throws Exception {
+		String baseUrl;
+		if(appUrl!="") {
+			baseUrl = appUrl;
+		}else {
+			LoadConfigProperty();
+			baseUrl = config.getProperty("siteUrl");
+		}
 		driver.get(baseUrl);
 	}
 
@@ -117,14 +123,15 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 		String cal1 = dateFormat.format(cal.getTime());
 		return cal1;
 	}
-
+	
+	@Parameters({ "appUrl" })
 	@BeforeSuite(alwaysRun = true)
-	public void setUp() throws Exception {
+	public void setUp(@Optional("http://20.62.200.252:5106/") String appUrl) throws Exception {
 		openBrowser();
 		maximizeWindow();
 		implicitWait(30);
 		deleteAllCookies();
-		setEnv();
+		setEnv(appUrl);
 	}
 
 	@AfterClass(alwaysRun = true)

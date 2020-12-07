@@ -31,6 +31,7 @@ public class LoginSteps extends CucumberRunner {
 	@Then("^I click on login button$")
 	public void clickOnLoginButton() throws Throwable {
 		loginPage.clickOnLogin();
+		Thread.sleep(5000);
 	}
 	
 	@Then("^I am able to login successfully$")
