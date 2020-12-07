@@ -54,5 +54,11 @@ public class CatalougePage extends CucumberRunner{
 		}
 	}
 	
+	public void addProductToBasket(String productName) {
+	    By addToBasket = By.xpath("//span[text()='"+productName+"']//ancestor::form/input[@value='[ ADD TO BASKET ]']");
+	    driver.findElement(addToBasket).click();
+	}
+	
+	
 	
 }

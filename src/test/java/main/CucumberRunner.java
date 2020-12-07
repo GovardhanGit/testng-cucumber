@@ -33,7 +33,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import helpers.ReportHelper;
 
-@CucumberOptions(strict = true, monochrome = true, features = "src/test/resources/features", glue = "stepdefinition", format = {"pretty","json:target/cucumber.json"}, tags = { "@Regression,@JunitScenario,@Filter,@Login,@Catalogue" })
+@CucumberOptions(strict = true, monochrome = true, features = "src/test/resources/features", glue = "stepdefinition", format = {"pretty","json:target/cucumber.json"}, tags = { "@Login,@Catalogue,@Filter,@e2e" })
 
 public class CucumberRunner extends AbstractTestNGCucumberTests {
 	public static Properties config = null;
@@ -104,6 +104,7 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 
 	public void deleteAllCookies() {
 		driver.manage().deleteAllCookies();
+		driver.navigate().refresh();
 	}
 	@Parameters({ "appUrl" })
 	public void setEnv(@Optional("http://20.62.200.252:5106/") String appUrl) throws Exception {

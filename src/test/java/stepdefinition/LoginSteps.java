@@ -13,19 +13,23 @@ public class LoginSteps extends CucumberRunner {
 	
 	@Given("^I am on login page$")
 	public void clickOnLogin() throws Throwable {
+		deleteAllCookies();
 		homePage.clickOnLoginLink();
+		Thread.sleep(5000);
 		String title = driver.getTitle();
 		System.out.println("Login page title is: "+title);
+		Assert.assertEquals(title, "Log in - Microsoft.eShopOnWeb", "Page title on login page not verified");
+		
 	}
 	
-	@Then("^I enter username \"(.*?)\"$")
-	public void enterUsername(String username) throws Throwable {
-		loginPage.enterUserEmail(username);
+	@Then("^I enter valid username$")
+	public void enterUsername() throws Throwable {
+		loginPage.enterUserEmail();
 	}
 	
-	@Then("^I enter password \"(.*?)\"$")
-	public void enterPassword(String password) throws Throwable {
-		loginPage.enterUserPassword(password);
+	@Then("^I enter valid password$")
+	public void enterPassword() throws Throwable {
+		loginPage.enterUserPassword();
 	}
 	
 	@Then("^I click on login button$")
@@ -39,5 +43,13 @@ public class LoginSteps extends CucumberRunner {
 		String title = driver.getTitle();
 		Assert.assertEquals(title, "Catalog - Microsoft.eShopOnWeb", "Page title after login not verified");
 	}
+	
+
+	@Then("^I logout$")
+	public void logout() throws Throwable {
+		String title = driver.getTitle();
+		Assert.assertEquals(title, "Catalog - Microsoft.eShopOnWeb", "Page title after login not verified");
+	}
+	
 	 
 }

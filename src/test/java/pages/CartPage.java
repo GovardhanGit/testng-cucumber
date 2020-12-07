@@ -6,6 +6,10 @@ import org.openqa.selenium.WebElement;
 import main.CucumberRunner;
 
 public class CartPage extends CucumberRunner{
+	public By continueShoppingButton = By.xpath("//a[text()='[ Continue Shopping..]']");
+	public By checkoutButton = By.xpath("//a[text()='[ Checkout ]']");
+	public By buttonPayNow = By.xpath("//input[@value='[ Pay Now ]']");
+	public By messageOrderSuccess = By.xpath("//h1[text()='Thanks for your Order!']");
 	
 	public WebElement getProductRow(String itemName) {
 		return driver.findElement(By.xpath("//section[text()='"+itemName
@@ -49,5 +53,18 @@ public class CartPage extends CucumberRunner{
 	public WebElement getUpdateCartButton() {
 		return driver.findElement(By.xpath("//button[@name='updatebutton']"));
 	}
-
+	
+	public void continueShopping() {
+		driver.findElement(continueShoppingButton).click();
+	}
+	public void clickOnCheckout() {
+		driver.findElement(checkoutButton).click();
+	}
+	public void clickOnPayNow() {
+		driver.findElement(buttonPayNow).click();
+	}
+	public void verifyOrderSuccess() {
+		driver.findElement(messageOrderSuccess).click();
+	}
+	
 }
