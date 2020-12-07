@@ -28,7 +28,6 @@ public class FilterPage extends CucumberRunner{
 		List<WebElement> allItems = driver.findElements(allProductNames);
 		
 		for(int i=0;i<allItems.size()-1;i++) {
-			System.out.println(allItems.get(i).getText());
 			if(!allItems.get(i).getText().contains(".NET")) {
 				return false;
 			}

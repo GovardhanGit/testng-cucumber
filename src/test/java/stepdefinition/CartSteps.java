@@ -2,7 +2,7 @@ package stepdefinition;
 
 import org.testng.Assert;
 
-import cucumber.api.java.en.Given;
+
 import cucumber.api.java.en.Then;
 import main.CucumberRunner;
 import pages.CartPage;
